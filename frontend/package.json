@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "entry": {
+    "index": "./src/index.js"
+  },
+  "dependencies": {
+    "dva": "^1.1.0",
+    "file-loader": "^0.9.0",
+    "husky": "^0.12.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "redux-logger": "^2.7.4"
+  },
+  "devDependencies": {
+    "atool-build": "^0.9.0",
+    "atool-test-mocha": "^0.1.5",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-dva-hmr": "^0.2.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-runtime": "^6.9.2",
+    "dora": "^0.4.3",
+    "dora-plugin-proxy": "^0.8.4",
+    "dora-plugin-webpack": "^0.8.1",
+    "dora-plugin-webpack-hmr": "^0.2.1",
+    "expect": "^1.20.2",
+    "redbox-react": "^1.3.2"
+  },
+  "scripts": {
+    "start": "dora --plugins \"proxy?watchDirs=./mock,webpack,webpack-hmr\"",
+    "build": "rm -f ../dist/* ./dist/* && atool-build --hash && node post-build.js && cp -R dist/* ../dist && mv ../dist/index.html ../templates/index.html",
+    "test": "atool-test-mocha ./src/**/*-test.js",
+    "prepush": "npm test"
+  }
+}

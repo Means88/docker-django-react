@@ -1,0 +1,27 @@
+version: "2"
+services:
+  db:
+    image: mysql
+    expose:
+      - "3306"
+    volumes:
+      - ../volumes/app-mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: "app"
+      MYSQL_USER: "username"
+      MYSQL_PASSWORD: "password"
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+
+  web:
+    depends_on:
+      - "db"
+    build: .
+    ports:
+      - "80:80"
+      - "8000:8000"
+    links:
+      - db

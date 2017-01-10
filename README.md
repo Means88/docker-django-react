@@ -93,6 +93,20 @@ ADD path/to/app.key /etc/nginx/app.key
 ```
 Add your crt and key in `path/to/`
 
+Edit `docker-compose.yml`
+```yml
+web:
+    depends_on:
+      - "db"
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8000:8000"
+    links:
+      - db
+```
+
 ### Database
 
 #### volumes path

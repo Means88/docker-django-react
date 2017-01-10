@@ -29,9 +29,10 @@ Need Python & pip, Node & npm / yarn
 Enable hot reload, access the api with mock server.
 
 ##### Use Django server
-1. `python manage.py migrate`
-2. [Build React](#build)
-3. http://localhost:8000
+1. [Build React](#build)
+2. `python manage.py migrate`
+3. `python manage.py runserver 0.0.0.0:8000`
+4. http://localhost:8000
 
 Connect to the Django server and the sqlite3 test database.
 
@@ -133,14 +134,10 @@ Edit `docker-compose.yml`, remove service `db`
 version: "2"
 services:
   web:
-    depends_on:
-      - "db"
     build: .
     ports:
       - "80:80"
       - "8000:8000"
-    links:
-      - db
 
 ```
 

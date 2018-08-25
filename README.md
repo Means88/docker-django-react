@@ -5,10 +5,6 @@ Start an application with Django and React, deploy with Docker quickly.
 
 Based on [Django Seed](https://github.com/joway/DjangoSeed). The React Application is structured using [dva](https://github.com/dvajs/dva).
 
-Live Demo
-----
-https://means88.com
-
 Start
 ----
 
